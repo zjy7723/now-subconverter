@@ -2,9 +2,11 @@ name: Update sub-web
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-    - 'subconverter/**'
+
+concurrency: 
+  group: sub-web
+  # 自动取消其他运行中的workflow
+  cancel-in-progress: true 
 
 jobs:
   build:
